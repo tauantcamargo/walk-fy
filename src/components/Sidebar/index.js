@@ -1,17 +1,18 @@
 import { Brand, Container, Nav, NewPlaylist } from './styles';
 
 import AddPlaylistIcon from '../../assets/images/add_playlist.svg';
+import { Link } from 'react-router-dom';
 import React from 'react';
 
 const Sidebar = () => (
   <Container>
     <div>
       <Brand>
-        <a>Walkfy</a>
+        <Link to="/">Walkfy</Link>
       </Brand>
       <Nav main>
         <li>
-          <a>Browse</a>
+          <Link to="/browse">Browse</Link>
         </li>
         <li>
           <a>Radio</a>

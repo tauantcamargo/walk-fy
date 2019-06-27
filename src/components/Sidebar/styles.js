@@ -20,6 +20,7 @@ export const Brand = styled.div`
     color: #fff;
     font-size: 15px;
     font-weight: bold;
+    text-decoration: none;
   }
 `;
 
