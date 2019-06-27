@@ -1,14 +1,13 @@
 import React, { Fragment } from 'react';
 
 import GlobalStyle from './styles/global';
+import Sidebar from './components/Sidebar';
 
 function App() {
   return (
     <Fragment>
       <GlobalStyle />
-      <h1 className="App">
-        Spotify
-      </h1>
+      <Sidebar />
     </Fragment>
   );
 }
