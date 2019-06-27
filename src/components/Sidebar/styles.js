@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.aside`
-  position: absolute;
   height: 100%;
   width: 200px;
   background: #121212;
@@ -17,9 +16,11 @@ export const Container = styled.aside`
 `;
 
 export const Brand = styled.div`
-  color: #fff;
-  font-size: 15px;
-  font-weight: bold;
+  a {
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+  }
 `;
 
 export const Nav = styled.ul`

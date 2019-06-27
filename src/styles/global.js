@@ -1,3 +1,5 @@
+import 'rc-slider/assets/index.css';
+
 import  { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
@@ -8,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
     outline: 0;
   }
 
-  html, border-style, #root {
+  html, body, #root {
     height: 100%;
   }
 
