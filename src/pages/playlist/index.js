@@ -1,8 +1,9 @@
-import { Container, Header, SongList } from './styles';
+import { Container, Header, SongItem, SongList } from './styles';
 import React, { Component } from 'react';
 
 import ClockIcon from '../../assets/images/clock.svg';
 import Loading from '../../components/Loading';
+import { Creators as PlayerActions } from '../../store/ducks/player';
 import { Creators as PlaylistDetailsActions } from '../../store/ducks/playlistDetails';
 import PlusIcon from '../../assets/images/plus.svg';
 import PropTypes from 'prop-types';
@@ -35,6 +36,14 @@ class Playlist extends Component {
       loading: PropTypes.bool,
     }).isRequired,
     getPlaylistDetailsRequest: PropTypes.func.isRequired,
+    loadSong: PropTypes.func.isRequired,
+    currentSong: PropTypes.shape({
+      id: PropTypes.number,
+    }).isRequired,
+  }
+
+  state = {
+    selectedSong: null,
   }
 
   componentDidUpdate(prevProps) {
@@ -93,13 +102,19 @@ class Playlist extends Component {
               </tr>
             ) : (
               songs.map(song => (
-                <tr key={song.playlistId}>
+                <SongItem
+                  key={song.playlistId}
+                  onClick={() => this.setState({ selectedSong: song.id })}
+                  onDoubleClick={() => this.props.loadSong(song, songs)}
+                  selected={this.state.selectedSong === song.id}
+                  playing={this.props.currentSong && this.props.currentSong.id === song.id}
+                >
                   <td><img src={PlusIcon} alt="Add to playlist" /></td>
                   <td>{song.title}</td>
                   <td>{song.author}</td>
                   <td>{song.album}</td>
                   <td>5:00</td>
-                </tr>
+                </SongItem>
               ))
             )}
           </tbody>
@@ -121,9 +136,10 @@ class Playlist extends Component {
 
 const mapStateToProps = state => ({
   playlistDetails: state.playlistDetails,
+  currentSong: state.player.currentSong,
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators(PlaylistDetailsActions, dispatch);
+  bindActionCreators({ ...PlaylistDetailsActions, ...PlayerActions }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Playlist);
