@@ -1,3 +1,4 @@
+import { Spinner } from '../../components/Loading/styles';
 import styled from 'styled-components';
 
 export const Container = styled.aside`
@@ -33,6 +34,9 @@ export const Nav = styled.ul`
   }
 
   li {
+    display: flex;
+    align-items: center;
+
     a {
       color: inherit;
       text-decoration: none;
@@ -52,6 +56,11 @@ export const Nav = styled.ul`
       line-height: 22px;
       letter-spacing: 1.11px;
       font-weight: lighter;
+    }
+
+    ${Spinner} {
+      height: 15px;
+      margin-left: 5px;
     }
   }
 `;

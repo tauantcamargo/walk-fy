@@ -1,6 +1,7 @@
 import { Container, List, Playlist, Title } from './styles';
 import React, { Component } from 'react';
 
+import Loading from '../../components/Loading';
 import { Creators as PlaylistsActions } from '../../store/ducks/playlists';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
@@ -14,7 +15,8 @@ class Browse extends Component {
         title: PropTypes.string,
         description: PropTypes.string,
         thumbnail: PropTypes.string,
-      })
+      }),
+      loading: PropTypes.bool,
     })).isRequired,
     getPlaylistsRequest: PropTypes.func.isRequired,
   }
@@ -27,7 +29,10 @@ class Browse extends Component {
     const { playlists } = this.props;
     return (
       <Container>
-        <Title>Browse</Title>
+        <Title>
+          Browse
+          {playlists.loading && <Loading />}
+        </Title>
 
         <List>
           {playlists.data.map(({id, title, description, thumbnail}) => (
