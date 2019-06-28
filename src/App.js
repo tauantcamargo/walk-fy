@@ -3,6 +3,7 @@ import './config/ReactotronConfig';
 import { Container, Content, Wrapper } from './styles/components';
 
 import  { BrowserRouter } from 'react-router-dom';
+import ErrorBox from './components/ErrorBox';
 import GlobalStyle from './styles/global';
 import Header from './components/Header';
 import Player from './components/Player';
@@ -22,6 +23,7 @@ function App() {
             <Container>
               <Sidebar />
               <Content>
+                <ErrorBox />
                 <Header />
                 <Routes />
               </Content>

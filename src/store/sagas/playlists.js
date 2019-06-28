@@ -1,5 +1,6 @@
 import { call, put } from 'redux-saga/effects';
 
+import { Creators as ErrorActions } from '../ducks/error';
 import { Creators as PlaylistsActions } from '../ducks/playlists';
 import api from '../../services/api';
 
@@ -9,6 +10,6 @@ export function* getPlaylists() {
 
     yield put(PlaylistsActions.getPlaylistsSuccess(data));
   } catch (err) {
-    console.log(err);
+    yield put(ErrorActions.setError('Was not possible get Playlists!'));
   }
 }

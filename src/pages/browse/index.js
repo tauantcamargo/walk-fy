@@ -9,15 +9,15 @@ import { connect } from 'react-redux';
 
 class Browse extends Component {
   static propTypes = {
-    playlists: PropTypes.arrayOf(PropTypes.shape({
-      data: PropTypes.shape({
+    playlists: PropTypes.shape({
+      data: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number,
         title: PropTypes.string,
         description: PropTypes.string,
         thumbnail: PropTypes.string,
-      }),
+      })),
       loading: PropTypes.bool,
-    })).isRequired,
+    }).isRequired,
     getPlaylistsRequest: PropTypes.func.isRequired,
   }
 

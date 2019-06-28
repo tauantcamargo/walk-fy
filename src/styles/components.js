@@ -21,5 +21,5 @@ export const Content = styled.div`
   background-repeat: no-repeat;
   background-position: top;
 
-  padding: 0 20px;
+  padding: 10px 20px;
 `;
